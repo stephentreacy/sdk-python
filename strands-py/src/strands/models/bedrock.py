@@ -1109,7 +1109,8 @@ class BedrockModel(Model):
                     else:
                         # Handle json field since not in ContentBlock but valid in ToolResultContent.
                         # Bedrock's Converse API only accepts an object for toolResult.content[].json;
-                        if isinstance(json_value, list):
+                        # wrap anything else (list, string, number, bool, None) to match.
+                        if not isinstance(json_value, dict):
                             json_value = {"$value": json_value}
                         formatted_content.append({"json": json_value})
                 else:
