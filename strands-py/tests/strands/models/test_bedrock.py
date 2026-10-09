@@ -5896,7 +5896,7 @@ def test_claude_model_wraps_list_json_in_tool_result(bedrock_client):
 
     assert len(tool_result["content"]) == 1
     assert "json" in tool_result["content"][0]
-    assert tool_result["content"][0]["json"] == {"value": [{"id": 1}, {"id": 2}]}
+    assert tool_result["content"][0]["json"] == {"$value": [{"id": 1}, {"id": 2}]}
 
 
 def test_nova_model_handles_nested_json_in_tool_result(bedrock_client):
